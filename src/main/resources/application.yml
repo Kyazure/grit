@@ -1,0 +1,57 @@
+server:
+  port: 8080
+
+spring:
+  #  配置文件
+  profiles:
+    active: dev
+  # 数据连接配置
+  datasource:
+    password: 123456
+    url: jdbc:mysql://118.190.90.157:3306/stonesys?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+  mvc:
+    throw-exception-if-no-handler-found: true
+    add-mappings: false
+  aop:
+    proxy-target-class: true
+    auto: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+    aop:
+      proxy-target-class: true
+      auto: true
+    servlet:
+      multipart:
+        max-file-size: 10MB
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+# Mybatis配置
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.hdjd.grit.model
+
+# 分页
+pagehelper:
+  helper-dialect: mysql
+  params: count=countSql
+  reasonable: true
+  supportMethodsArguments: true
+
+# 日志
+logging:
+  level:
+    root: warn
+    com:
+      hdjd: debug
+  file:
+    path: /root/java/log
+
+    com:
+      hdjd: debug
